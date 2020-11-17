@@ -5,7 +5,7 @@ export class Mundo{
     constructor(){
         this.escena = new THREE.Scene();
         this.camara = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight,1,1000);
-        this.camara.position.z = 5;
+        this.camara.position.z = 3;
         this.renderizador = new THREE.WebGLRenderer();
         this.renderizador.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( this.renderizador.domElement );
