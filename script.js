@@ -27,9 +27,9 @@ function inicializar() {
   var loader = new GLTFLoader();
   loader.load('modelo/maceta.glb', function(gltf) {
     modelo = gltf.scene;
-    modelo.scale.x = 5.5;
-    modelo.scale.y = 5.5;
-    modelo.scale.z = 5.5;
+    modelo.scale.x = 6.5;
+    modelo.scale.y = 6.5;
+    modelo.scale.z = 6.5;
     modelo.position.y = -0.75;
     modelo.traverse(function(child) {
       if (child.isMesh) {
