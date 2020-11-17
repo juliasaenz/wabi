@@ -16,20 +16,22 @@ import {
 } from 'https://unpkg.com/three@0.121.1/examples/jsm/controls/OrbitControls.js';
 var mundo;
 var cubo1, cubo2;
+var modelo;
 
 function inicializar() {
   mundo = new Mundo();
   ilumnarConHDRI('hdr/campo2.hdr', mundo);
-  mundo.crearOrbitControl();
+  //mundo.crearOrbitControl();
 
 
   var loader = new GLTFLoader();
   loader.load('modelo/maceta.glb', function(gltf) {
-    gltf.scene.scale.x = 5.5;
-    gltf.scene.scale.y = 5.5;
-    gltf.scene.scale.z = 5.5;
-    gltf.scene.position.y = -0.75;
-    gltf.scene.traverse(function(child) {
+    modelo = gltf.scene;
+    modelo.scale.x = 5.5;
+    modelo.scale.y = 5.5;
+    modelo.scale.z = 5.5;
+    modelo.position.y = -0.75;
+    modelo.traverse(function(child) {
       if (child.isMesh) {
         if (child.name === 'vidrio') {
           child.material.opacity = 0.4;
@@ -39,12 +41,13 @@ function inicializar() {
         }
       }
     });
-    mundo.escena.add(gltf.scene);
+    mundo.escena.add(modelo);
   });
 }
 
 function animar() {
   requestAnimationFrame(animar);
+  modelo.rotation.y += 0.01;
   mundo.renderizar();
 }
 inicializar();

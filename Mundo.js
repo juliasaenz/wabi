@@ -13,8 +13,8 @@ export class Mundo{
     }
     crearOrbitControl(){
         this.controls = new OrbitControls( this.camara, this.renderizador.domElement );
-        this.controls.minDistance = 1;
-        this.controls.maxDistance = 1000;
+        this.controls.minDistance = 2;
+        this.controls.maxDistance = 5;
     }
     renderizar(){
         this.renderizador.render( this.escena, this.camara );
