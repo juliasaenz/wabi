@@ -20,7 +20,7 @@ function iniciar() {
   sucu.scale.y = 0.1;
   sucu.scale.z = 0.1;
   sucu.rotation.y = 90;
-  marcador.add(maceta);
+  marcador.add(sucu);
 
   /* loader = new GLTFLoader();
   loader.load('modelo/maceta.glb', function(gltf) {
