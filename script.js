@@ -14,11 +14,12 @@ function iniciar() {
   contextoAR = new ContextoAR(mundo);
 
   var marcador = contextoAR.crearMarcador('./marcadores/gatito.patt','wabi');
-  var maceta = new THREE.Object3D();
+  var sucu = new THREE.Object3D();
   cargarModelo('./modelo/suculenta.glb', maceta);
-  maceta.scale.x = 0.1;
-  maceta.scale.y = 0.1;
-  maceta.scale.z = 0.1;
+  sucu.scale.x = 0.1;
+  sucu.scale.y = 0.1;
+  sucu.scale.z = 0.1;
+  sucu.rotation.y = 90;
   marcador.add(maceta);
 
   /* loader = new GLTFLoader();
