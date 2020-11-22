@@ -1,31 +1,27 @@
-import * as THREE from 'https://unpkg.com/three@0.121.1/build/three.module.js'; //'../threegit/build/three.module.js';;//'https://unpkg.com/three@0.118.3/build/three.module.js';//'../threeLibs/build/three.module.js';
-import {
-  Mundo
-} from './Mundo.js';
-import {
-  RGBELoader
-} from 'https://unpkg.com/three@0.121.1/examples/jsm/loaders/RGBELoader.js';
-import {
-  GLTFLoader
-} from 'https://unpkg.com/three@0.121.1/examples/jsm/loaders/GLTFLoader.js';
-import {
-  ilumnarConHDRI
-} from './funciones.js';
-import {
-  OrbitControls
-} from 'https://unpkg.com/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://unpkg.com/three@0.122.0/build/three.module.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.122.0/examples/jsm/loaders/GLTFLoader.js';
+import {Mundo} from './Mundo.js';
+import {cargarModelo} from './CargarModelo.js';
+import {ContextoAR} from './ContextoAR.js';
+
+var modelo;
 var mundo;
-var cubo1, cubo2;
-var modelo, modelo2;
+var contextoAR
 
-function inicializar() {
+function iniciar() {
   mundo = new Mundo();
-  mundo.escena.background = new THREE.Color(0x9BB59E);
-  //ilumnarConHDRI('hdr/bosque.hdr', mundo);
-  //mundo.crearOrbitControl();
+  mundo.iluminar();
+  contextoAR = new ContextoAR(mundo);
 
+  var marcador = contextoAR.crearMarcador('./marcadores/wabi.patt','wabi');
+  var maceta = new THREE.Object3D();
+  cargarModelo('./modelo/maceta.glb', maceta);
+  maceta.scale.x = 0.5;
+  maceta.scale.y = 0.5;
+  maceta.scale.z = 0.5;
+  marcador.add(maceta);
 
-  var loader = new GLTFLoader();
+  /* loader = new GLTFLoader();
   loader.load('modelo/maceta.glb', function(gltf) {
     modelo = gltf.scene;
     modelo.scale.x = 6.5;
@@ -68,24 +64,19 @@ function inicializar() {
       }
     });
     mundo.escena.add(modelo2);
-  });
+  }); */
+// fin iniciar
 }
 
-function crearIluminacionDePrueba(){
-    var light = new THREE.AmbientLight( 0xfafafa ); // soft white light
-    mundo.escena.add( light );
-
-    var puntual = new THREE.PointLight( 0xD5C9A4, 1, 100 );
-    puntual.position.set( 1, 1.5, 1.2 );
-    mundo.escena.add( puntual );
-}
 
 function animar() {
   requestAnimationFrame(animar);
-  modelo.rotation.y += 0.007;
-  modelo2.rotation.y += 0.007;
-  mundo.renderizar();
+  //modelo.rotation.y += 0.007;
+  //modelo2.rotation.y += 0.007;
+  contextoAR.actualizar();
+  mundo.dibujar();
 }
-inicializar();
-crearIluminacionDePrueba();
+
+/// main
+iniciar();
 animar();
