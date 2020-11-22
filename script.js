@@ -13,7 +13,7 @@ function iniciar(){
     contextoAR = new ContextoAR(mundo);
 
 
-    var marcador = contextoAR.crearMarcador('./marcadores/nombre.patt','flecha');
+    var marcador = contextoAR.crearMarcador('./marcadores/wabi2.patt','flecha');
     maceta = new THREE.Object3D();
     cargarModelo('./modelo/macetaF002.glb',maceta);
     maceta.scale.x = 0.15;
