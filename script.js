@@ -4,80 +4,31 @@ import {Mundo} from './Mundo.js';
 import {cargarModelo} from './CargarModelo.js';
 import {ContextoAR} from './ContextoAR.js';
 
-var modelo;
+var maceta;
 var mundo;
-var contextoAR
-
-function iniciar() {
-  mundo = new Mundo();
-  mundo.iluminar();
-  contextoAR = new ContextoAR(mundo);
-
-  var marcador = contextoAR.crearMarcador('./marcadores/gatito.patt','wabi');
-  var sucu = new THREE.Object3D();
-  cargarModelo('./modelo/suculenta.glb', maceta);
-  sucu.scale.x = 0.3;
-  sucu.scale.y = 0.3;
-  sucu.scale.z = 0.3;
-  //sucu.rotation.y = 90;
-  marcador.add(sucu);
-
-  /* loader = new GLTFLoader();
-  loader.load('modelo/maceta.glb', function(gltf) {
-    modelo = gltf.scene;
-    modelo.scale.x = 6.5;
-    modelo.scale.y = 6.5;
-    modelo.scale.z = 6.5;
-    modelo.position.y = -0.6;
-    modelo.position.z = -0.1;
-    modelo.rotation.x = 0.4;
-    modelo.traverse(function(child) {
-      if (child.isMesh) {
-        if (child.name === 'vidrio') {
-          child.material.opacity = 0.4;
-          child.material.transparent = true;
-          child.material.roughness = 0;
-          child.material.refractionRatio = 0.8;
-        }
-      }
-    });
-    mundo.escena.add(modelo);
-  });
+var contextoAR;
+function iniciar(){
+    mundo = new Mundo();
+    mundo.iluminar();
+    contextoAR = new ContextoAR(mundo);
 
 
-  var loader2 = new GLTFLoader();
-  loader2.load('modelo/suculenta.glb', function(gltf) {
-    modelo2 = gltf.scene;
-    modelo2.scale.x = 0.1;
-    modelo2.scale.y = 0.1;
-    modelo2.scale.z = 0.1;
-    modelo2.position.y = -0.7;
-    modelo2.position.z = -0.1;
-    modelo2.rotation.x = 0.4;
-    modelo2.traverse(function(child) {
-      if (child.isMesh) {
-        if (child.name === 'vidrio') {
-          child.material.opacity = 0.4;
-          child.material.transparent = true;
-          child.material.roughness = 0;
-          child.material.refractionRatio = 0.8;
-        }
-      }
-    });
-    mundo.escena.add(modelo2);
-  }); */
-// fin iniciar
+    var marcador = contextoAR.crearMarcador('./marcadores/nombre.patt','flecha');
+    maceta = new THREE.Object3D();
+    cargarModelo('./modelo/macetaF002.glb',maceta);
+    maceta.scale.x = 0.15;
+    maceta.scale.y = 0.15;
+    maceta.scale.z = 0.15;
+    maceta.position.z = 0.7;
+    marcador.add(maceta);
 }
 
-
-function animar() {
-  requestAnimationFrame(animar);
-  //modelo.rotation.y += 0.007;
-  //modelo2.rotation.y += 0.007;
-  contextoAR.actualizar();
-  mundo.dibujar();
+function animacion(){
+    requestAnimationFrame(animacion);
+    contextoAR.actualizar();
+    mundo.dibujar();
 }
 
-/// main
 iniciar();
-animar();
+//crearCajaDePrueba();
+animacion();
