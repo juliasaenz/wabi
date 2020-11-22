@@ -27,9 +27,6 @@ function animacion(){
     requestAnimationFrame(animacion);
     contextoAR.actualizar();
     mundo.dibujar();
-    if (maceta == undefined){
-      println("no cargo");
-    }
 }
 
 iniciar();
