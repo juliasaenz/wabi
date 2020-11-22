@@ -13,9 +13,9 @@ function iniciar() {
   mundo.iluminar();
   contextoAR = new ContextoAR(mundo);
 
-  var marcador = contextoAR.crearMarcador('./marcadores/wabi.patt','wabi');
+  var marcador = contextoAR.crearMarcador('./marcadores/gatito.patt','wabi');
   var maceta = new THREE.Object3D();
-  cargarModelo('./modelo/maceta.glb', maceta);
+  cargarModelo('./modelo/modelo.glb', maceta);
   maceta.scale.x = 0.5;
   maceta.scale.y = 0.5;
   maceta.scale.z = 0.5;
