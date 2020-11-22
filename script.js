@@ -16,14 +16,15 @@ function iniciar(){
     var marcador = contextoAR.crearMarcador('./marcadores/wabi2.patt','flecha');
     maceta = new THREE.Object3D();
     cargarModelo('./modelo/macetaF002.glb',maceta);
-    maceta.scale.x = 0.15;
-    maceta.scale.y = 0.15;
-    maceta.scale.z = 0.15;
+    maceta.scale.x = 0.2;
+    maceta.scale.y = 0.2;
+    maceta.scale.z = 0.2;
     maceta.position.z = 0.7;
     marcador.add(maceta);
 }
 
 function animacion(){
+    //console.log(maceta == undefined);
     requestAnimationFrame(animacion);
     contextoAR.actualizar();
     mundo.dibujar();
